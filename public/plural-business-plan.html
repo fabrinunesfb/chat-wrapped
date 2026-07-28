@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLURAL | Master Business Plan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-main: #050507;
+            --bg-surface: #121217;
+            --border: rgba(255, 255, 255, 0.1);
+            --purple: #a855f7;
+            --purple-glow: rgba(168, 85, 247, 0.15);
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+            --gradient: linear-gradient(135deg, #a855f7, #0ea5e9);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-muted);
+            display: flex;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Outfit', sans-serif;
+            color: var(--text-main);
+        }
+
+        /* SIDEBAR NAVIGATION */
+        .sidebar {
+            width: 280px;
+            background-color: var(--bg-surface);
+            border-right: 1px solid var(--border);
+            height: 100vh;
+            position: fixed;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .logo-container {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo-container h1 {
+            font-size: 2rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            padding: 12px 15px;
+            margin-bottom: 8px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .nav-link:hover {
+            background-color: var(--purple-glow);
+            color: var(--text-main);
+        }
+
+        /* MAIN CONTENT */
+        .main-content {
+            margin-left: 280px;
+            padding: 60px 80px;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        header {
+            margin-bottom: 80px;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            color: var(--purple);
+            font-weight: 600;
+        }
+
+        section {
+            margin-bottom: 80px;
+            padding-top: 40px;
+            border-top: 1px solid var(--border);
+        }
+
+        section h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            border-left: 4px solid var(--purple);
+            padding-left: 16px;
+        }
+
+        /* CARDS & GRIDS */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 30px;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--purple);
+            box-shadow: 0 10px 30px var(--purple-glow);
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--purple);
+        }
+
+        .highlight-data {
+            font-size: 2.5rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 10px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--purple-glow);
+            color: var(--purple);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        /* TABELA COMPETITIVA */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+        }
+
+        td { font-size: 0.9rem; }
+
+        .td-highlight {
+            color: var(--purple);
+            font-weight: 600;
+            background-color: var(--purple-glow);
+        }
+
+        @media(max-width: 900px) {
+            .sidebar { display: none; }
+            .main-content { margin-left: 0; padding: 40px 20px; }
+            .grid-2, .grid-3 { grid-template-columns: 1fr; }
+            header h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="sidebar">
+        <div class="logo-container">
+            <h1>PLURAL</h1>
+            <span style="font-size: 0.7rem; letter-spacing: 2px;">BUSINESS PLAN</span>
+        </div>
+        <a href="#summary" class="nav-link">01. Executive Summary</a>
+        <a href="#market" class="nav-link">02. Market Intelligence</a>
+        <a href="#audience" class="nav-link">03. Estratégia Camaleão</a>
+        <a href="#product" class="nav-link">04. O Produto (Oráculo)</a>
+        <a href="#monetization" class="nav-link">05. Monetização</a>
+        <a href="#financials" class="nav-link">06. The Ask & Finanças</a>
+    </nav>
+
+    <main class="main-content">
+
+        <header>
+            <span class="badge">Novembro / 2025</span>
+            <h1>MASTER BUSINESS PLAN<br>& PRODUCT BOOK</h1>
+            <p class="tagline">"Saiba o que esperar. Viva o que quiser."</p>
+        </header>
+
+        <section id="summary">
+            <h2>01. A Tese Expandida</h2>
+            <p>O mercado de dating tradicional está saturado e opera sob o "Cassino de Dopamina", lucrando com a permanência do usuário solteiro. O PLURAL nasce como o primeiro Ecossistema de Conexões Plurais "Clean" e "Smart". Queremos ser o "Google Analytics do Amor".</p>
+            <br>
+            <p>Deixamos de vender "Encontros" (curto prazo) para vender "Previsibilidade" e segurança (médio prazo e compatibilidade).</p>
+        </section>
+
+        <section id="market">
+            <h2>02. Market Intelligence</h2>
+            <p>Nós atuamos em um Oceano Azul focado na não-monogamia consensual (CNM), liberais, e perfis bissexuais curiosos.</p>
+            <br>
+            <div class="grid-3">
+                <div class="card">
+                    <div class="highlight-data">110M</div>
+                    <h3>TAM (Total Market)</h3>
+                    <p>Brasileiros adultos com acesso a internet móvel e smartphone.</p>
+                </div>
+                <div class="card">
+                    <div class="highlight-data">15 a 20M</div>
+                    <h3>SAM (Market Endereçável)</h3>
+                    <p>Público adepto de formatos não-monogâmicos, liberais e curiosos.</p>
+                </div>
+                <div class="card">
+                    <div class="highlight-data">500k</div>
+                    <h3>SOM (Meta Ano 1)</h3>
+                    <p>Usuários ativos, iniciando com foco em SP, RJ, BH e Brasília.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="audience">
+            <h2>03. Público-Alvo: A Estratégia "Camaleão"</h2>
+            <p>O aplicativo utiliza a mesma infraestrutura para resolver dores opostas em classes sociais diferentes (Cross-Class).</p>
+            <br>
+            <div class="grid-2">
+                <div class="card">
+                    <span class="badge">A Elite (High Stakes)</span>
+                    <h3>Classe A/B</h3>
+                    <p>Buscam <strong>Eficiência & Lifestyle</strong>. Têm muito a perder e prezam pela curadoria para poupar tempo e proteger a reputação corporativa, fugindo da vulgaridade dos sites atuais.</p>
+                </div>
+                <div class="card">
+                    <span class="badge">A Base (Mass Market)</span>
+                    <h3>Classe C/D/E</h3>
+                    <p>Buscam <strong>Segurança & Verdade</strong>. Sofrem com medo de perfis falsos e julgamento de igreja, vizinhos e família. Usam as ferramentas de privacidade nativas (Contact Shield).</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="product">
+            <h2>04. O Produto e A Tecnologia</h2>
+            <p>A identidade visual foca na "Inteligência Fluida" com estética Dark Mode, distanciando-se totalmente de padrões de sites adultos.</p>
+            <br>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>Core Features</h3>
+                    <ul style="padding-left: 20px; margin-top: 10px;">
+                        <li><strong>Contact Shield:</strong> Integração API que bloqueia hard-match com números da agenda (chefes, vizinhos).</li>
+                        <li><strong>Dynamic Linking:</strong> Vínculo de perfis para navegação "Solo" ou "Dupla".</li>
+                        <li><strong>Álbum Blur:</strong> Efeito fosco para privacidade padrão nas fotos públicas.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>O "Oráculo" (IA Preditiva)</h3>
+                    <ul style="padding-left: 20px; margin-top: 10px;">
+                        <li><strong>AI Mediator:</strong> Bloqueia spam e nudez não solicitada via Processamento de Linguagem Natural.</li>
+                        <li><strong>Compatibility Engine:</strong> Baseado no modelo psicométrico "Big Five" para gerar previsão de duração da conexão.</li>
+                        <li><strong>Liveness Check:</strong> Biometria facial obrigatória no cadastro.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="monetization">
+            <h2>05. Modelo de Monetização</h2>
+            <p>Foco em Receita Recorrente (ARR) e Upsell Transacional de altíssima margem.</p>
+            <br>
+            <div class="grid-3">
+                <div class="card">
+                    <span class="badge">Plano FREE</span>
+                    <h3>R$ 0,00</h3>
+                    <p><strong>Foco:</strong> Liquidez / Volume.</p>
+                    <p>Inclusões: Perfil base, Contact Shield gratuito, limite de likes, previsão simples.</p>
+                </div>
+                <div class="card" style="border-color: var(--purple);">
+                    <span class="badge">Plano GOLD</span>
+                    <h3>R$ 39,90 /mês</h3>
+                    <p><strong>Foco:</strong> Eficiência.</p>
+                    <p>Inclusões: Likes infinitos, lista de quem curtiu, filtros avançados e função voltar (undo).</p>
+                </div>
+                <div class="card">
+                    <span class="badge">Plano BLACK</span>
+                    <h3>R$ 99,90 /mês</h3>
+                    <p><strong>Foco:</strong> Sigilo Extremo.</p>
+                    <p>Inclusões: Modo Fantasma, autodestruição de fotos no chat e boost algorítmico.</p>
+                </div>
+            </div>
+            <br>
+            <div class="card" style="background: var(--purple-glow); border: none;">
+                <h3 style="color: var(--text-main);">A Mina de Ouro: Pay-per-Insight (R$ 19,90)</h3>
+                <p style="color: var(--text-main);">Usuários gratuitos ou Gold podem comprar relatórios preditivos avançados sobre um match, gerando receita transacional e imediata de alta margem.</p>
+            </div>
+        </section>
+
+        <section id="financials">
+            <h2>06. The Ask & Roadmap</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>Rodada Pre-Seed</h3>
+                    <p><strong>Pedido (Ask):</strong> R$ 600.000,00.</p>
+                    <p><strong>Equity Oferecido:</strong> 10% a 12% via SAFE Note ou Kiss Note.</p>
+                    <p><strong>Runway:</strong> 14 a 16 meses.</p>
+                    <p style="margin-top: 15px;"><strong>Alocação:</strong> 50% Tech/Produto, 30% Growth/CAC, 20% Legal/LGPD e Operação.</p>
+                </div>
+                <div class="card">
+                    <h3>Projeção de Escala</h3>
+                    <ul style="padding-left: 20px; margin-top: 10px;">
+                        <li><strong>Ano 1:</strong> 50k usuários | R$ 1.5M ARR (Breakeven).</li>
+                        <li><strong>Ano 2:</strong> 250k usuários | R$ 10M ARR (Expansão e Série A).</li>
+                        <li><strong>Ano 3:</strong> +1M usuários | R$ 40M+ ARR (Scale & Exit via M&A).</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+</body>
+</html>
