@@ -19,6 +19,10 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Space Grotesk', sans-serif;
             background-color: var(--bg-main);
@@ -74,6 +78,11 @@
         .nav-link:hover {
             background-color: var(--purple-glow);
             color: var(--text-main);
+        }
+
+        .nav-link.active {
+            background-color: var(--purple-glow);
+            color: var(--purple);
         }
 
         /* MAIN CONTENT */
@@ -350,5 +359,29 @@
         </section>
 
     </main>
+
+    <script>
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('main section[id]');
+
+        const setActiveLink = (id) => {
+            navLinks.forEach((link) => {
+                link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+            });
+        };
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                const visible = entries
+                    .filter((entry) => entry.isIntersecting)
+                    .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+                if (visible) setActiveLink(visible.target.id);
+            },
+            { rootMargin: '-20% 0px -70% 0px', threshold: [0, 0.25, 0.5, 0.75, 1] }
+        );
+
+        sections.forEach((section) => observer.observe(section));
+        if (sections[0]) setActiveLink(sections[0].id);
+    </script>
 </body>
 </html>
